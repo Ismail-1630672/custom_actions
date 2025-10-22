@@ -1,0 +1,14 @@
+name: my first custom action #displays name of action in logs
+description: A simple action that prints a greeting message #short explanation of what the action does
+
+inputs: #defines variables that can be passed into the action (like parameters)
+  persons_name: #the variable
+    description: The name of the person
+    required: true #controls if the input is mandatory
+    default: world #default value
+
+runs: #defines how your action executes
+  using: composite
+  steps: #a list of commands that make up your custom action
+    - name: Run script
+      run: bash ${{ github.action_path }}/action.sh ${{ inputs.persons_name }} #the actual shell command that runs when someone uses your action, github.action_path is a built in github variable that points to the directory containing your action, this ensures the path works anywhere the repo is cloned.

@@ -11,4 +11,5 @@ runs: #defines how your action executes
   using: composite
   steps: #a list of commands that make up your custom action
     - name: Run script
-      run: bash ${{ github.action_path }}/action.sh ${{ inputs.persons_name }} #the actual shell command that runs when someone uses your action, github.action_path is a built in github variable that points to the directory containing your action, this ensures the path works anywhere the repo is cloned.
+      run: bash ${{ github.action_path }}/action.sh ${{ inputs.persons_name }}
+      shell: bash #the actual shell command that runs when someone uses your action, github.action_path is a built in github variable that points to the directory containing your action, this ensures the path works anywhere the repo is cloned.
